@@ -1,0 +1,119 @@
+/* Estilo del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #a9ceff; /* Fondo gris claro similar al ejemplo */
+}
+
+/* Contenedor del libro */
+#bookContainer {
+    width: 80%; /* Ajustar a la proporción correcta del libro */
+    height: 80%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px; /* Bordes redondeados para un acabado más real */
+}
+
+/* Estilo del libro */
+#book {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+/* Estilo de las páginas */
+.page {
+    width: 50%; /* Cada página ocupa la mitad del contenedor */
+    height: 100%;
+    position: relative;
+    background: #c6ebff; /* Color claro para simular papel */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra sutil en cada página */
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%; /* Limita el ancho del GIF al 90% de la página */
+    max-height: 100%; /* Limita la altura del GIF al 90% de la página */
+    object-fit: contain; /* Asegura que el contenido no se deforme */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra opcional */
+}
+
+img.lozad {
+    width: 100%; /* Ajusta según necesites */
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+img.lozad.fade {
+    opacity: 1; /* Hace que la imagen se desvanezca cuando se carga */
+}
+
+
+/* Degradado hacia el centro (sombra en la costura) */
+.page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px; /* Ancho del degradado */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.15), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Ajuste del degradado para páginas pares */
+.page:nth-child(2)::before {
+    right: 0; /* Degradado desde la derecha en páginas pares */
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.15), transparent);
+}
+
+/* Estilos para los controles */
+#controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px; /* Espaciado entre botones */
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #4fc3f7; /* Azul claro */
+    color: white; /* Texto blanco */
+    font-size: 18px; /* Tamaño de fuente grande */
+    padding: 15px 30px; /* Relleno para hacerlo más grande y fácil de presionar */
+    border: 2px solid #1e88e5; /* Borde azul */
+    border-radius: 25px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: all 0.3s ease; /* Transición suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Efecto hover (cuando el ratón pasa sobre el botón) */
+button:hover {
+    background-color: #1e88e5; /* Azul más oscuro */
+    transform: translateY(-4px); /* Eleva el botón ligeramente */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+/* Efecto de foco (cuando el botón es seleccionado) */
+button:focus {
+    outline: none; /* Eliminar el contorno por defecto */
+    box-shadow: 0 0 10px rgba(63, 81, 181, 0.7); /* Resalta el botón */
+}
+
+/* Estilos para el texto de los botones */
+button:active {
+    transform: translateY(2px); /* Hace que el botón se "hunda" un poco cuando se hace clic */
+}
